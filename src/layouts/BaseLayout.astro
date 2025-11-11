@@ -1,5 +1,12 @@
 ---
 const { title, base } = Astro.props;
+const year = new Date().getFullYear();
+
+// Determine active page based on current URL
+const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+function isActive(path) {
+  return currentPath === `${base}${path}` ? 'font-weight: bold; text-decoration: underline;' : '';
+}
 ---
 <html lang="en">
   <head>
@@ -7,22 +14,37 @@ const { title, base } = Astro.props;
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
+    <style>
+      nav a {
+        color: inherit;
+        text-decoration: none;
+        margin-right: 1rem;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
+    <!-- Header / Navbar -->
     <header>
       <nav>
-        <a href={`${base}/`}>Home</a>
-        | <a href={`${base}/about`}>About Me</a>
-        | <a href={`${base}/projects`}>Projects</a>
+        <a href={`${base}/`} style={isActive('/')}>Home</a>
+        <a href={`${base}/about`} style={isActive('/about')}>About Me</a>
+        <a href={`${base}/projects`} style={isActive('/projects')}>Projects</a>
       </nav>
       <hr />
     </header>
+
+    <!-- Page content -->
     <main>
       <slot />
     </main>
+
+    <!-- Footer -->
     <footer>
       <hr />
-      <p>&copy; 2025 Arnav Krishnan</p>
+      <p>&copy; {year} Arnav Krishnan</p>
     </footer>
   </body>
 </html>

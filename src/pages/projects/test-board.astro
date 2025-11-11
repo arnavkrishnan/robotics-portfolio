@@ -2,7 +2,27 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = '/robotics-portfolio';
 ---
+
 <BaseLayout title="Test Board" base={base}>
   <h1>Test Board</h1>
-  <p>This is a test project page.</p>
+
+  <p>
+    Lathed both hex shafts. For both of them, we printed out a 1:1 diagram on paper to help us ensure we were working correctly. Also for both of them, we cut them slightly short with the bandsaw, but were able to adjust our measurements ‘on the fly’, such that the shafts still worked fine. Other than that, we had no problems. We spent a lot of time waiting to use the band saw, and the lathe (two were out of order at one point), so we weren’t able to move past this task.
+  </p>
+
+  <!-- Images side by side -->
+  <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0;">
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/sprocket-shaft-drawing.png`} alt="Sprocket shaft drawing" style="width: 100%; height: auto;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Sprocket shaft drawing</figcaption>
+    </figure>
+    <figure style="flex: 1; min-width: 250px;">
+      <img src={`${base}/images/wheel-shaft-drawing.png`} alt="Wheel shaft drawing" style="width: 100%; height: auto;" />
+      <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Wheel shaft drawing</figcaption>
+    </figure>
+  </div>
+
+  <p>
+    I really enjoyed working with Elliot this week. He is very knowledgeable in CAD and machining, and knows a lot of tips and tricks that he showed me (for example, you can leave the lathe on while applying cutting fluid - it does it for you). I learned a ton from working with him, and enjoyed it in the process. We moved fast (but not too fast!) to complete lathing our parts and I think we should have no problems mounting the wheel to the gearbox and attaching the chain.
+  </p>
 </BaseLayout>

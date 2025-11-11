@@ -14,9 +14,9 @@ export default defineConfig({
   site: 'https://arnavkrishnan.github.io',
   base: '/robotics-portfolio',
   output: 'static',
-  integrations: [react(), sitemap(), mdx()],
-
   vite: {
-    plugins: [tailwindcss()]
-  }
+    // @ts-ignore
+    plugins: [tailwindcss()],
+  },
+  integrations: [react(), sitemap(), mdx()],
 });
