@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = '/robotics-portfolio';
 ---
-<BaseLayout title="Home">
-  <h1>Welcome to my blog!</h1>
-  <p>This is the homepage.</p>
+<BaseLayout title="Home" base={base}>
+  <h1>Home</h1>
+  <p>Welcome to my robotics portfolio!</p>
 </BaseLayout>

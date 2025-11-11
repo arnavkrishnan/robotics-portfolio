@@ -1,31 +1,25 @@
 ---
-// Props allow each page to pass its <title>
-const { title } = Astro.props;
+const { title, base } = Astro.props;
 ---
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
   </head>
   <body>
-    <!-- Header / Navbar -->
     <header>
       <nav>
-        <a href="/">Home</a> 
-        | <a href="/about">About Me</a> 
-        | <a href="/projects">Projects</a> 
+        <a href={`${base}/`}>Home</a>
+        | <a href={`${base}/about`}>About Me</a>
+        | <a href={`${base}/projects`}>Projects</a>
       </nav>
       <hr />
     </header>
-
-    <!-- Page content -->
     <main>
-      <slot /> <!-- This is where the page content goes -->
+      <slot />
     </main>
-
-    <!-- Footer -->
     <footer>
       <hr />
       <p>&copy; 2025 Arnav Krishnan</p>
