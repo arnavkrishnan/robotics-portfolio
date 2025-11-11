@@ -9,8 +9,13 @@ import mdx from '@astrojs/mdx';
 
 import tailwindcss from '@tailwindcss/vite';
 
+const dev = process.env.NODE_ENV === 'development';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://arnavkrishnan.github.io',
+  base: dev ? '/' : '/robotics-portfolio',
+  output: 'static',
   integrations: [react(), sitemap(), mdx()],
 
   vite: {
