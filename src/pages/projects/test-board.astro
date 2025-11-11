@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ShaftModels from '../../components/ShaftModels.jsx';
+
 const base = '/robotics-portfolio';
 ---
 
@@ -21,6 +23,9 @@ const base = '/robotics-portfolio';
       <figcaption style="text-align: center; font-size: 0.9rem; margin-top: 0.3rem;">Wheel shaft drawing</figcaption>
     </figure>
   </div>
+
+  <!-- React 3D models -->
+  <ShaftModels client:load base={base} />
 
   <p>
     I really enjoyed working with Elliot this week. He is very knowledgeable in CAD and machining, and knows a lot of tips and tricks that he showed me (for example, you can leave the lathe on while applying cutting fluid - it does it for you). I learned a ton from working with him, and enjoyed it in the process. We moved fast (but not too fast!) to complete lathing our parts and I think we should have no problems mounting the wheel to the gearbox and attaching the chain.
