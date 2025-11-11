@@ -1,18 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import VideoCarousel from '../../components/VideoCarousel.jsx';
 import ShaftModels from '../../components/ShaftModels.jsx';
 
 const base = '/robotics-portfolio';
+const videos = [
+  `${base}/videos/TB_vid_1.mp4`,
+  `${base}/videos/TB_vid_2.mp4`,
+  `${base}/videos/TB_vid_3.mp4`
+];
 ---
 
 <BaseLayout title="Test Board" base={base}>
   <h1>Test Board</h1>
+  <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">
+    Design a gearbox to lift as large a mass as possible, while ensuring the motor operates at maximum power output.
+  </h2>
+
+  <VideoCarousel client:load videos={videos} width="100%" height="100%" />
 
   <p>
     Lathed both hex shafts. For both of them, we printed out a 1:1 diagram on paper to help us ensure we were working correctly. Also for both of them, we cut them slightly short with the bandsaw, but were able to adjust our measurements ‘on the fly’, such that the shafts still worked fine. Other than that, we had no problems. We spent a lot of time waiting to use the band saw, and the lathe (two were out of order at one point), so we weren’t able to move past this task.
   </p>
 
-  <!-- Images side by side -->
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0;">
     <figure style="flex: 1; min-width: 250px;">
       <img src={`${base}/images/sprocket-shaft-drawing.png`} alt="Sprocket shaft drawing" style="width: 100%; height: auto;" />
@@ -24,7 +34,25 @@ const base = '/robotics-portfolio';
     </figure>
   </div>
 
-  <!-- React 3D models -->
+  <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin: 2rem 0; font-family: monospace; font-size: 0.9rem;">
+    <h2 style="margin-top:0;">Measurements (0.01 Added)</h2>
+    <ul style="padding-left: 1.2rem;">
+      <li>24 Sprocket Thickness: 0.765 in.</li>
+      <li>16 Sprocket Thickness: 0.385 in.</li>
+      <li>Throughbore Spline: 1.625 ± 0.003 in.</li>
+      <li>Board Thickness: 0.49 in.</li>
+      <li>Screw Height Tolerance: 0.2 in.</li>
+      <li>Lathe bit thickness: 0.05 in.</li>
+    </ul>
+    <p>
+      Total Length = 0.1 (Extra Material) + 0.05 (Slot) + 1.630 (Spline) + 0.05 (Slot) + 0.49 (Board) + 0.2 (Screw Height) + 0.05 (Slot) + 0.765 (24T) + 0.05 (Slot) + 0.1 (Extra Material) = 3.485 → 312 (added tolerance for bandsaw cut)
+    </p>
+    <p>Slots Distance from Face: 0.15, 1.83, 2.57, 3.385</p>
+    <p>
+      Wheel Shaft: 0.1 (Extra Material) + 0.05 (Slot) + 0.49 (Board) + 0.15 (Bearing Flanges) + 0.05 (Slot) + 0.2 (Screw Clearance) + 0.05 (Slot) + 1.43 (Wheel) + 0.1 (Adapters) + 0.05 (Slot) = 21316
+    </p>
+  </div>
+
   <ShaftModels client:load base={base} />
 
   <p>
