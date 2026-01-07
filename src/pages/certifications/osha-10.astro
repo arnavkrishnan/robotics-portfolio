@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pagination from '../../components/Pagination.astro';
+const base = '/robotics-portfolio';
+
+const previous = null;
+const next = 'nc3-mechatronics';
+---
+<BaseLayout title="OSHA - 10 Hour General Industry" base={base}>
+  <Pagination base={base} section="certifications" previous={previous} next={next} />
+  
+  <h1>OSHA - 10 Hour General Industry</h1>
+  
+  <section>
+    <h2>About This Certification</h2>
+    <p>Details about OSHA 10 Hour General Industry certification coming soon...</p>
+  </section>
+  
+</BaseLayout>

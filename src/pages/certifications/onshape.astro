@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pagination from '../../components/Pagination.astro';
+const base = '/robotics-portfolio';
+
+const previous = 'nc3-mechatronics';
+const next = null;
+---
+<BaseLayout title="Onshape Certifications" base={base}>
+  <Pagination base={base} section="certifications" previous={previous} next={next} />
+  
+  <h1>Onshape Certifications</h1>
+  
+  <section>
+    <h2>Onshape Certifications</h2>
+    <ul>
+      <li>Placeholder Certification 1</li>
+      <li>Placeholder Certification 2</li>
+      <li>Placeholder Certification 3</li>
+      <li>Placeholder Certification 4</li>
+      <li>Placeholder Certification 5</li>
+    </ul>
+  </section>
+  
+</BaseLayout>

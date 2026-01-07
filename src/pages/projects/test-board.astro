@@ -1,9 +1,15 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pagination from '../../components/Pagination.astro';
 import VideoCarousel from '../../components/VideoCarousel.jsx';
 import ShaftModels from '../../components/ShaftModels.jsx';
 
 const base = '/robotics-portfolio';
+
+// Define previous and next projects (null if none)
+const previous = null; // No previous project yet
+const next = null; // No next project yet
+
 const videos = [
   `${base}/videos/TB_vid_1.mp4`,
   `${base}/videos/TB_vid_2.mp4`,
@@ -12,6 +18,8 @@ const videos = [
 ---
 
 <BaseLayout title="Test Board" base={base}>
+  <Pagination base={base} section="projects" previous={previous} next={next} />
+  
   <h1>Test Board</h1>
   <h2 style="font-weight: normal; color: #555; margin-top: 0.5rem; font-size: 1.25rem;">
     Design a gearbox to lift as large a mass as possible, while ensuring the motor operates at maximum power output.
@@ -20,7 +28,7 @@ const videos = [
   <VideoCarousel client:load videos={videos} width="100%" height="100%" />
 
   <p>
-    Lathed both hex shafts. For both of them, we printed out a 1:1 diagram on paper to help us ensure we were working correctly. Also for both of them, we cut them slightly short with the bandsaw, but were able to adjust our measurements ‘on the fly’, such that the shafts still worked fine. Other than that, we had no problems. We spent a lot of time waiting to use the band saw, and the lathe (two were out of order at one point), so we weren’t able to move past this task.
+    Lathed both hex shafts. For both of them, we printed out a 1:1 diagram on paper to help us ensure we were working correctly. Also for both of them, we cut them slightly short with the bandsaw, but were able to adjust our measurements 'on the fly', such that the shafts still worked fine. Other than that, we had no problems. We spent a lot of time waiting to use the band saw, and the lathe (two were out of order at one point), so we weren't able to move past this task.
   </p>
 
   <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0;">
@@ -57,5 +65,5 @@ const videos = [
 
   <p>
     I really enjoyed working with Elliot this week. He is very knowledgeable in CAD and machining, and knows a lot of tips and tricks that he showed me (for example, you can leave the lathe on while applying cutting fluid - it does it for you). I learned a ton from working with him, and enjoyed it in the process. We moved fast (but not too fast!) to complete lathing our parts and I think we should have no problems mounting the wheel to the gearbox and attaching the chain.
-  </p>
+  </p> 
 </BaseLayout>

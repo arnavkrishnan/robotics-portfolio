@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Pagination from '../../components/Pagination.astro';
+const base = '/robotics-portfolio';
+
+const previous = 'osha-10';
+const next = 'onshape';
+---
+<BaseLayout title="NC3 Introduction to Mechatronics" base={base}>
+  <Pagination base={base} section="certifications" previous={previous} next={next} />
+  
+  <h1>NC3 Introduction to Mechatronics</h1>
+  
+  <section>
+    <h2>About This Certification</h2>
+    <p>Details about NC3 Introduction to Mechatronics certification coming soon...</p>
+  </section>
+  
+</BaseLayout>
