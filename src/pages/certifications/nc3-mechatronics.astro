@@ -11,9 +11,133 @@ const next = 'onshape';
   
   <h1>NC3 Introduction to Mechatronics</h1>
   
+  <section> <h2>About This Certification</h2> <p> The NC3 Introduction to Mechatronics course provides foundational knowledge in the integration of mechanical, electrical, and computer systems. This comprehensive program covers essential topics including basic electronics, sensors and actuators, programmable logic controllers (PLCs), robotics fundamentals, automation technology, electro-pneumatic systems, and importantly: safety. I use an electronic book to learn material, which is tested in progress checks on Canvas- see the pictures below. </p> <p> <strong>Status:</strong> Currently in progress, about halfway through to the final exam. I have completed Units 1-6, demonstrating proficiency in fundamental mechatronics concepts including Safety, the Funamentals of Automation Technology, Electro-Pneumatic Systems, FluidSIM, and Stacking Magazines. I have also made a container lid control program project using FluidSIM 6. </p> </section>
+
   <section>
-    <h2>About This Certification</h2>
-    <p>Details about NC3 Introduction to Mechatronics certification coming soon...</p>
+    <h2>Project Files</h2>
+    <p>Download the fluid simulation circuit file:</p>
+    <p><a href={`${base}/files/fluidsim.circ`} download>fluidsim.circ</a></p>
+  </section>
+
+  <section>
+    <h2>Progress Check Completions</h2>
+    <p>Below are completion certificates for Units 1-6 progress checks:</p>
+    
+    <div class="carousel-container">
+      <div class="carousel">
+        <img src={`${base}/images/nc3-prog-checks/1.png`} alt="Unit 1 Progress Check Completion" class="carousel-image active" />
+        <img src={`${base}/images/nc3-prog-checks/2.png`} alt="Unit 2 Progress Check Completion" class="carousel-image" />
+        <img src={`${base}/images/nc3-prog-checks/3.png`} alt="Unit 3 Progress Check Completion" class="carousel-image" />
+        <img src={`${base}/images/nc3-prog-checks/4.png`} alt="Unit 4 Progress Check Completion" class="carousel-image" />
+        <img src={`${base}/images/nc3-prog-checks/5.png`} alt="Unit 5 Progress Check Completion" class="carousel-image" />
+        <img src={`${base}/images/nc3-prog-checks/6.png`} alt="Unit 6 Progress Check Completion" class="carousel-image" />
+      </div>
+      
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" aria-label="Previous image">←</button>
+        <span class="dot active" data-index="0">○</span>
+        <span class="dot" data-index="1">○</span>
+        <span class="dot" data-index="2">○</span>
+        <span class="dot" data-index="3">○</span>
+        <span class="dot" data-index="4">○</span>
+        <span class="dot" data-index="5">○</span>
+        <button class="carousel-btn next" aria-label="Next image">→</button>
+      </div>
+    </div>
   </section>
   
 </BaseLayout>
+
+<style>
+  .carousel-container {
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #000;
+    background: #fff;
+  }
+
+  .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+  }
+
+  .carousel-image.active {
+    opacity: 1;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .dot {
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  .dot.active {
+    color: #000;
+  }
+
+  .dot:not(.active) {
+    color: #999;
+  }
+</style>
+
+<script>
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.carousel-image');
+  const dots = document.querySelectorAll('.dot');
+  const totalImages = images.length;
+
+  function showImage(index: number) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    showImage(currentIndex);
+  }
+
+  document.querySelector('.next')?.addEventListener('click', nextImage);
+  document.querySelector('.prev')?.addEventListener('click', prevImage);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      showImage(currentIndex);
+    });
+  });
+</script>
