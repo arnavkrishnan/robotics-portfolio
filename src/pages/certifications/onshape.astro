@@ -6,6 +6,7 @@ const base = '/robotics-portfolio';
 const previous = 'nc3-mechatronics';
 const next = null;
 ---
+
 <BaseLayout title="Onshape Certifications" base={base}>
   <Pagination base={base} section="certifications" previous={previous} next={next} />
   
@@ -24,14 +25,14 @@ const next = null;
       The coursework of both pathways covered key topics including sketching, part modeling, assembly constraints, and design documentation. 
     </p>
     <p>
-      CAD for Robotics was additionally covering specialized topics such as manufacturing 
-      considerations, custom component creation, design communication, collaboration workflows, and drivetrain assembly—all 
-      essential skills for competitive robotics and real-world engineering applications.
+      CAD for Robotics additionally covered specialized topics such as manufacturing considerations, custom component creation, 
+      design communication, collaboration workflows, and drivetrain assembly—all essential skills for competitive robotics 
+      and real-world engineering applications.
     </p>
   </section>
 
   <section style="margin-top: 2rem;">
-    <h2>Certificate</h2>
+    <h2>CAD Basics Certificate</h2>
     <figure>
       <img 
         src={`${base}/certificates/onshape.png`} 
@@ -43,5 +44,126 @@ const next = null;
       </figcaption>
     </figure>
   </section>
-  
+
+  <!-- CAD for Robotics Carousel -->
+  <section style="margin-top: 3rem;">
+    <h2>CAD for Robotics Coursework</h2>
+    <p>Selected screenshots from the Onshape CAD for Robotics training pathway:</p>
+
+    <div class="carousel-container">
+      <div class="carousel">
+        <img src={`${base}/certificates/cad-for-robotics/1.png`} alt="CAD for Robotics Screenshot 1" class="carousel-image active" />
+        <img src={`${base}/certificates/cad-for-robotics/2.png`} alt="CAD for Robotics Screenshot 2" class="carousel-image" />
+        <img src={`${base}/certificates/cad-for-robotics/3.png`} alt="CAD for Robotics Screenshot 3" class="carousel-image" />
+        <img src={`${base}/certificates/cad-for-robotics/4.png`} alt="CAD for Robotics Screenshot 4" class="carousel-image" />
+        <img src={`${base}/certificates/cad-for-robotics/5.png`} alt="CAD for Robotics Screenshot 5" class="carousel-image" />
+        <img src={`${base}/certificates/cad-for-robotics/6.png`} alt="CAD for Robotics Screenshot 6" class="carousel-image" />
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" aria-label="Previous image">←</button>
+        <span class="dot active" data-index="0">○</span>
+        <span class="dot" data-index="1">○</span>
+        <span class="dot" data-index="2">○</span>
+        <span class="dot" data-index="3">○</span>
+        <span class="dot" data-index="4">○</span>
+        <span class="dot" data-index="5">○</span>
+        <button class="carousel-btn next" aria-label="Next image">→</button>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
+
+<style is:global>
+  .carousel-container {
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #000;
+    background: #fff;
+  }
+
+  .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+  }
+
+  .carousel-image.active {
+    opacity: 1;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .carousel-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0;
+  }
+
+  .dot {
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+
+  .dot.active {
+    color: #000;
+  }
+
+  .dot:not(.active) {
+    color: #999;
+  }
+</style>
+
+<script is:inline>
+  let currentIndex = 0;
+  const images = document.querySelectorAll('.carousel-image');
+  const dots = document.querySelectorAll('.dot');
+  const totalImages = images.length;
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % totalImages;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    showImage(currentIndex);
+  }
+
+  document.querySelector('.next')?.addEventListener('click', nextImage);
+  document.querySelector('.prev')?.addEventListener('click', prevImage);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      showImage(currentIndex);
+    });
+  });
+</script>
